@@ -29,6 +29,7 @@ module.exports = (passport) => {
 
                 newUser.username = username
                 newUser.password = newUser.generateHash(password)
+                newUser.ideas = []
 
                 return newUser.save(done)
             })

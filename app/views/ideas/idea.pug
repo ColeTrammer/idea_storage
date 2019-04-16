@@ -1,0 +1,8 @@
+extends ../layout.pug
+
+block content
+    .card.text-white(style="background-color: #303133;")
+        .card-header.text-muted= idea.category
+        .card-body
+            h3.card-title= idea.title
+            p.cart-text= idea.content

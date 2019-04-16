@@ -1,0 +1,14 @@
+extends ../layout.pug
+
+block content
+    form(action="/ideas/create" method="POST" enctype="application/x-www-form-urlencoded")
+        .form-group
+            label(for="title") Title:
+            input.form-control#title(type="text" name="title")
+        .form-group
+            label(for="category") Category:
+            input.form-control#category(type="text" name="category")
+        .form-group
+            label(for="content") Content:
+            textarea.form-control#content(rows="12" name="content")
+        input.btn.btn-primary(type="submit" value="Create")

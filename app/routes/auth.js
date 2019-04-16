@@ -5,7 +5,7 @@ const mw = require("../middlewares")
 module.exports = (app, passport) => {
 
     app.get("/login", (req, res) => {
-        res.render("login")
+        res.render("auth/login")
     })
 
     app.post("/login", mw.parseForm, (req, res, next) => {
@@ -26,7 +26,7 @@ module.exports = (app, passport) => {
     })
 
     app.get("/signup", (req, res) => {
-        res.render("signup")
+        res.render("auth/signup")
     })
 
     app.post("/signup", mw.parseForm, passport.authenticate("local-signup", {

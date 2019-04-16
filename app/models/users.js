@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt-nodejs")
 
 const schema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    ideas: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Idea" }]
 })
 
 schema.methods.generateHash = (password) => {
