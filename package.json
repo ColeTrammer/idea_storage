@@ -1,0 +1,30 @@
+{
+  "name": "idea_storage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColeTrammer/idea_storage.git"
+  },
+  "author": "ColeTrammer",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ColeTrammer/idea_storage/issues"
+  },
+  "homepage": "https://github.com/ColeTrammer/idea_storage#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mongoose": "^5.5.1",
+    "passport": "^0.4.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.3"
+  }
+}
