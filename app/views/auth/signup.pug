@@ -1,7 +1,7 @@
 extends ../layout.pug
 
 block content
-    form(action="/signup" method="POST" enctype="application/x-www-form-urlencoded")
+    form.text-white(action="/signup" method="POST" enctype="application/x-www-form-urlencoded")
         .form-group
             label(for="username") Username:
             input.form-control#username(type="text" name="username")

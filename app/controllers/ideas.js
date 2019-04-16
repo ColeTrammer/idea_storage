@@ -47,6 +47,54 @@ module.exports = {
 
             res.render("ideas/idea", { idea: idea })
         })
+    },
+
+    editForm: (req, res) => {
+        Idea.findById(req.params.id, (err, idea) => {
+            if (err)
+                return res.status(503).send("Error")
+            
+            res.render("ideas/edit", { idea: idea })
+        })
+    },
+
+    edit: (req, res) => {
+        if (!req.body.title || !req.body.content || !req.body.category) {
+            req.flash("Invalid edit")
+            res.redirect(`/ideas/${req.params.id}/edit`)
+        }
+
+        Idea.updateOne({ _id: req.params.id }, { title: req.body.title, category: req.body.category, content: req.body.content }, (err) => {
+            if (err)
+                return res.status(503).send("Error")
+            
+            res.redirect(`/ideas/${req.params.id}`)
+        })
+    },
+
+    delete: (req, res) => {
+        Idea.deleteOne({ _id: req.params.id }, (err) => {
+            if (err)
+                return res.status(503).send("Error")
+        
+            User.updateOne({ _id: req.user._id }, { $pullAll: { ideas: [ req.params.id ] } }, (err) => {
+                if (err)
+                    return res.status(503).send("Error")
+                
+                res.redirect("/ideas")
+            })
+        })
+    },
+
+    api_all: (req, res) => {
+        async.map(req.user.ideas, (id, done) => {
+            Idea.findById(id, done)
+        }, (err, ideas) => {
+            if (err)
+                return res.status(503).send({ error: err })
+            
+            res.send(ideas)
+        })
     }
 
 }

@@ -1,10 +1,10 @@
 extends ../layout.pug
 
+block head
+    script(src="/public/js/ideas/ideas.js")
+
 block content
     h1.text-center Ideas
-    each idea in ideas
-        div
-            h5= idea.title
-            p= idea.category
-            p= idea.content
-    a(href="/ideas/create") Create Idea
+    .accordion#ideas
+    #util
+        a(href="/ideas/create") #[button.btn.btn-secondary Create Idea]

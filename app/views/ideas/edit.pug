@@ -4,22 +4,22 @@ block head
     script(src="https://cdn.jsdelivr.net/npm/marked/marked.min.js")
     script(src="/public/js/ideas/preview.js")
 
-block content  
+block content
     .row
         .col-lg-6
-            form#idea(action="/ideas/create" method="POST" enctype="application/x-www-form-urlencoded")
+            form#idea.text-white(action="/ideas/" + idea._id + "/edit" method="POST" enctype="application/x-www-form-urlencoded")
                 .form-group
                     label(for="title") Title:
-                    input.form-control#title(type="text" name="title")
+                    input.form-control#title(type="text" name="title" value=idea.title)
                 .form-group
                     label(for="category") Category:
-                    input.form-control#category(type="text" name="category")
+                    input.form-control#category(type="text" name="category" value=idea.category)
                 .form-group
                     label(for="content") Content:
-                    textarea.form-control#content(rows="12" name="content")
-                input.btn.btn-primary(type="submit" value="Create")
+                    textarea.form-control#content(rows="12" name="content")= idea.content
+                input.btn.btn-secondary(type="submit" value="Edit")
         .col-lg-6
-            #preview.card.text-white(style="background-color: #303133; display: none;")
+            #preview.card.text-white(style="background-color: #303133;")
                 #preview-category.card-header.text-muted
                 .card-body
                     h3#preview-title.card-title
