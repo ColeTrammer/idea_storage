@@ -13,8 +13,8 @@ const cookieParser = require("cookie-parser")
 const session = require("express-session")
 
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
-require("./app/config/passport.js")
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+require("./app/config/passport")(passport)
 
 app.set("view engine", "pug")
 app.set("views", path.join(__dirname, "app/views"))
@@ -25,7 +25,13 @@ app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: 
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
+app.use((req, res, next) => {
+    res.locals.successMessages = req.flash("successMessages");
+    res.locals.errorMessages = req.flash("errorMessages");
+    res.locals.user = req.user;
+    next();
+});
 
-require("./app/routes.js")(app, passport)
+require("./app/routes")(app, passport)
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT)
