@@ -62,3 +62,4 @@ typings/
 
 .backup
 .backup-temp
+nodemon.json
