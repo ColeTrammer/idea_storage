@@ -13,7 +13,6 @@ $(document).ready(() => {
                     node.categories[categoryName].ideas.push(idea);
                     break;
                 } else if (i == categories.length - 1) {
-                    node.categories[categoryName] = {};
                     node.categories[categoryName] = {
                         parent: i === 0 ? root.name : categories[i - 1],
                         name: categoryName,
@@ -23,15 +22,7 @@ $(document).ready(() => {
                     break;
                 }
 
-                if (node.categories[categoryName]) {
-                    node.categories[categoryName] = {
-                        parent: i === 0 ? root.name : categories[i - 1],
-                        name: categoryName,
-                        categories: {},
-                        ideas: [],
-                    };
-                } else {
-                    node.categories = {};
+                if (!node.categories[categoryName]) {
                     node.categories[categoryName] = {
                         parent: i === 0 ? root.name : categories[i - 1],
                         name: categoryName,
