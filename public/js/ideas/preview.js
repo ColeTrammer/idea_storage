@@ -1,13 +1,13 @@
 $(document).ready(() => {
     const f = () => {
-        $("#preview-category").html($("#category").val())
-        $("#preview-title").html($("#title").val())
-        $("#preview-content").html(marked($("#content").val()))
-    }
+        $("#preview-category").html($("#category").val());
+        $("#preview-title").html($("#title").val());
+        $("#preview-content").html(marked($("#content").val()));
+    };
 
-    f()
+    f();
     $("#idea").on("input", () => {
-        f()
-        $("#preview").show()
-    })
-})
+        f();
+        $("#preview").show();
+    });
+});

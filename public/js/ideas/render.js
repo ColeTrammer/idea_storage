@@ -1,3 +1,3 @@
 $(document).ready(() => {
-    $("#content").html(marked($("#content").html()))
-})
+    $("#content").html(marked($("#content").html()));
+});

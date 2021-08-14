@@ -1,11 +1,11 @@
-"use strict"
+"use strict";
 
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
     title: String,
     content: String,
-    category: String
-})
+    category: String,
+});
 
-module.exports = mongoose.model("Idea", schema)
+module.exports = mongoose.model("Idea", schema);
