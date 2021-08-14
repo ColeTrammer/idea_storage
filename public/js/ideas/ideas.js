@@ -36,19 +36,18 @@ $(() => {
         });
 
         const renderCategory = (ostream, node) => {
-            ostream.append(`<div class="accordion">`);
-
             Object.values(node.categories).forEach(key => {
+                const id = `category-${key.parent}-${key.name}`;
+                const headerId = `${id}-header`;
+                const contentId = `${id}-content`;
+
                 let output = "";
-                output += '<div class="card">';
-                output += `<div class="card-header"><h2 class="mb-0">`;
-                output += `<button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#category-${key.parent}-${key.name}">${key.name}</button>`;
-                output += `</h2></div>`;
-                output += `<div id=category-${key.parent}-${key.name} class="card-body collapse"><ul class="list-group category">`;
-                output += `<div id=category-${key.parent}-${key.name}-parent></div>`;
-                if (Object.keys(node.categories) !== 0) {
-                    output += `<div id="${key.parent}-${key.name}" class="accordion"><ul class="list-group category">`;
-                }
+                output += '<div class="accordion-item">';
+                output += `<h2 class="accordion-header" id="${headerId}">`;
+                output += `<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#${contentId}" aria-expanded="false" aria-controls="${contentId}">${key.name}</button>`;
+                output += `</h2>`;
+                output += `<div id=${contentId} class="accordion-collapse collapse" aria-labelledby="${headerId}"><ul class="list-group list-group-flush">`;
+                output += `<div id=category-${key.parent}-${key.name}-parent class="accordion accordion-flush"></div>`;
                 key.ideas.forEach(idea => {
                     output += `<a href="/ideas/${idea._id}" class="list-group-item list-group-item-action">${idea.title}</a>`;
                 });
@@ -58,8 +57,6 @@ $(() => {
 
                 renderCategory($(`#category-${key.parent}-${key.name}-parent`), key);
             });
-
-            ostream.append("</div>");
         };
 
         renderCategory($("#ideas"), root);
