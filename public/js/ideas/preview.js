@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(() => {
     const f = () => {
         $("#preview-category").html($("#category").val());
         $("#preview-title").html($("#title").val());

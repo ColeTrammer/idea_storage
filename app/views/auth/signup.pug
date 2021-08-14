@@ -1,12 +1,10 @@
 extends ../layout.pug
 
 block content
-    form.text-white(action="/signup" method="POST" enctype="application/x-www-form-urlencoded")
-        .form-group
-            label(for="username") Username:
-            input.form-control#username(type="text" name="username")
-        .form-group
-            label(for="password") Password:
-            input.form-control#password(type="password" name="password")
+    form(action="/signup" method="POST" enctype="application/x-www-form-urlencoded")
+        label.form-label(for="username") Username:
+        input.form-control.mb-3#username(type="text" name="username")
+        label.form-label(for="password") Password:
+        input.form-control.mb-3#password(type="password" name="password")
         input.btn.btn-primary(type="submit" value="Sign Up")
         span(style="float: right;") #[a(href="/login") Log In]

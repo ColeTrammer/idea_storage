@@ -6,39 +6,50 @@ html(lang="en")
         
         title="Idea Storage"
         
-        link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
-        link(href="/public/css/main.sass", rel="stylesheet")
+        link(href="/public/css/bootstrap-custom.scss"
+             rel="stylesheet")
+        link(href="/public/css/main.scss"
+             rel="stylesheet")
 
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
-        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js"
+               integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+               crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+               integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+               crossorigin="anonymous")
         
         block head
     
     body
-        nav.navbar.navbar-expand-lg.navbar-dark(style="background-color: #303133;")
-            a.navbar-brand(href="/") Idea Storage
-            button.navbar-toggler(type="button" data-toggle="collapse" data-target="#dropdown")
-                span.navbar-toggler-icon
-            .collapse.navbar-collapse#dropdown
-                ul.navbar-nav.mr-auto
-                    li.nav-item
-                        a.nav-link(href="/ideas") All Ideas
-                ul.navbar-nav.ml-auto
-                    if user
-                        li.nav-item #[a.nav-link(href="/logout") Log out]
-                    else
-                        li.nav-item #[a.nav-link(href="/login") Log in]
-        .container#main
+        nav#header.navbar.navbar-expand-lg.navbar-dark.bg-primary
+            .container-fluid
+                a.navbar-brand(href="/") Idea Storage
+                button.navbar-toggler(type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#dropdown"
+                                      aria-controls="dropdown"
+                                      aria-expanded="false"
+                                      aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse#dropdown
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link(href="/ideas") All Ideas
+                    ul.navbar-nav.ms-auto
+                        if user
+                            li.nav-item #[a.nav-link(href="/logout") Log out]
+                        else
+                            li.nav-item #[a.nav-link(href="/login") Log in]
+        main.container.mt-2
             if successMessages
                 each m in successMessages
-                    div.alert.alert-success.alert-dismissible
-                        button.close(data-dismiss="alert") #[span(aria-hidden=true) &times]
-                        p= m
+                    div.alert.alert-success.alert-dismissible.fade.show(role="alert")
+                        span= m
+                        button.btn-close(data-bs-dismiss="alert" aria-label="Close")
             if errorMessages
                 each m in errorMessages
-                    div.alert.alert-danger.alert-dismissible
-                        button.close(data-dismiss="alert") #[span(aria-hidden=true) &times]
-                        p= m
+                    div.alert.alert-danger.alert-dismissible.fade.show(role="alert")
+                        span= m
+                        button.btn-close(data-bs-dismiss="alert" aria-label="Close")
     
             block content

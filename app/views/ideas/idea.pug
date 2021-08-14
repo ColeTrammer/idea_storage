@@ -5,11 +5,11 @@ block head
     script(src="/public/js/ideas/render.js")
 
 block content
-    .card.text-white(style="background-color: #303133;")
+    .card
         .card-header.text-muted= idea.category
         .card-body
             h3.card-title= idea.title
             p#content.cart-text= idea.content
-    #util
+    .mt-2
         a(href="/ideas/" + idea._id + "/edit") #[button.btn.btn-secondary Edit]
-        a(href="/ideas/" + idea._id + "/delete" style="float: right;") #[button.btn.btn-secondary Delete]
+        a(href="/ideas/" + idea._id + "/delete" style="float: right;") #[button.btn.btn-danger Delete]

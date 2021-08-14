@@ -7,19 +7,16 @@ block head
 block content
     .row
         .col-lg-6
-            form#idea.text-white(action="/ideas/" + idea._id + "/edit" method="POST" enctype="application/x-www-form-urlencoded")
-                .form-group
-                    label(for="title") Title:
-                    input.form-control#title(type="text" name="title" value=idea.title)
-                .form-group
-                    label(for="category") Category:
-                    input.form-control#category(type="text" name="category" value=idea.category)
-                .form-group
-                    label(for="content") Content:
-                    textarea.form-control#content(rows="12" name="content")= idea.content
-                input.btn.btn-secondary(type="submit" value="Edit")
+            form#idea(action="/ideas/" + idea._id + "/edit" method="POST" enctype="application/x-www-form-urlencoded")
+                label.form-label(for="title") Title:
+                input.form-control.mb-3#title(type="text" name="title" value=idea.title)
+                label.form-label(for="category") Category:
+                input.form-control.mb-3#category(type="text" name="category" value=idea.category)
+                label.form-label(for="content") Content:
+                textarea.form-control.mb-3#content(rows="12" name="content")= idea.content
+                input.btn.btn-primary(type="submit" value="Update")
         .col-lg-6
-            #preview.card.text-white(style="background-color: #303133;")
+            #preview.card
                 #preview-category.card-header.text-muted
                 .card-body
                     h3#preview-title.card-title

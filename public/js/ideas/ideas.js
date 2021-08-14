@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(() => {
     $.getJSON("/api/ideas", data => {
         const root = { parent: "", name: "idea", categories: {}, ideas: [] };
         data.forEach(idea => {
@@ -42,7 +42,7 @@ $(document).ready(() => {
                 let output = "";
                 output += '<div class="card">';
                 output += `<div class="card-header"><h2 class="mb-0">`;
-                output += `<button class="btn btn-link" data-toggle="collapse" data-target="#category-${key.parent}-${key.name}">${key.name}</button>`;
+                output += `<button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#category-${key.parent}-${key.name}">${key.name}</button>`;
                 output += `</h2></div>`;
                 output += `<div id=category-${key.parent}-${key.name} class="card-body collapse"><ul class="list-group category">`;
                 output += `<div id=category-${key.parent}-${key.name}-parent></div>`;
