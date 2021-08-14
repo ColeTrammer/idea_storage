@@ -15,7 +15,7 @@ const session = require("express-session");
 const sass = require("express-compile-sass");
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 require("./app/config/passport")(passport);
 
 app.set("view engine", "pug");
