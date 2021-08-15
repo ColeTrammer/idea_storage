@@ -7,13 +7,13 @@ block head
 block content
     .row
         .col-lg-6.mb-3.mb-0-lg
-            form#idea(action="/ideas/" + idea._id + "/edit" method="POST" enctype="application/x-www-form-urlencoded")
+            form#idea.needs-validation(action="/ideas/" + idea._id + "/edit" method="POST" enctype="application/x-www-form-urlencoded")
                 label.form-label(for="title") Title:
-                input.form-control.mb-3#title(type="text" name="title" value=idea.title)
+                input.form-control.mb-3#title(type="text" name="title" value=idea.title required)
                 label.form-label(for="category") Category:
-                input.form-control.mb-3#category(type="text" name="category" value=idea.category)
+                input.form-control.mb-3#category(type="text" name="category" value=idea.category required)
                 label.form-label(for="content") Content:
-                textarea.form-control.mb-3#content(rows="12" name="content")= idea.content
+                textarea.form-control.mb-3#content(rows="12" name="content" required)= idea.content
                 input.btn.btn-primary(type="submit" value="Update")
         .col-lg-6
             #preview.card

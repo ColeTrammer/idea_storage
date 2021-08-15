@@ -27,6 +27,7 @@ module.exports = {
         if (!req.body.title || !req.body.content || !req.body.category) {
             req.flash("Invalid idea");
             res.redirect("/ideas/create");
+            return;
         }
 
         Idea.create({ title: req.body.title, content: req.body.content, category: req.body.category }, (err, idea) => {
@@ -60,6 +61,7 @@ module.exports = {
         if (!req.body.title || !req.body.content || !req.body.category) {
             req.flash("Invalid edit");
             res.redirect(`/ideas/${req.params.id}/edit`);
+            return;
         }
 
         Idea.updateOne({ _id: req.params.id }, { title: req.body.title, category: req.body.category, content: req.body.content }, err => {

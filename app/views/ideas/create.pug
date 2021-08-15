@@ -7,13 +7,13 @@ block head
 block content  
     .row
         .col-lg-6.mb-3.mb-0-lg
-            form#idea(action="/ideas/create" method="POST" enctype="application/x-www-form-urlencoded")
+            form#idea.needs-validation(action="/ideas/create" method="POST" enctype="application/x-www-form-urlencoded")
                 label.form-label(for="title") Title:
-                input.form-control.mb-3#title(type="text" name="title")
-                label.form-label(for="category") Category:
-                input.form-control.mb-3#category(type="text" name="category")
-                label.form-label(for="content") Content:
-                textarea.form-control.mb-3#content(rows="12" name="content")
+                input.form-control.mb-3#title(type="text" name="title" required)
+                label.form-label(for="category" required) Category:
+                input.form-control.mb-3#category(type="text" name="category" required)
+                label.form-label(for="content" required) Content:
+                textarea.form-control.mb-3#content(rows="12" name="content" required)
                 input.btn.btn-primary(type="submit" value="Create")
         .col-lg-6
             #preview.card(style="display: none")
