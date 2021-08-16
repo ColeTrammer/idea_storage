@@ -51,13 +51,13 @@ $(() => {
 
                 let output = "";
                 output += '<div class="accordion-item">';
-                output += `<h2 class="accordion-header" id="${headerId}">`;
+                output += `<p class="accordion-header" id="${headerId}">`;
                 output += `<button class="accordion-button ${collapsedClass}" data-bs-toggle="collapse" data-bs-target="#${contentId}" aria-expanded="${shouldExpand}" aria-controls="${contentId}">${key.name}</button>`;
-                output += `</h2>`;
+                output += `</p>`;
                 output += `<div id=${contentId} class="accordion-collapse collapse ${showClass}" aria-labelledby="${headerId}"><ul class="list-group list-group-flush">`;
                 output += `<div id=category-${key.parent}-${key.name}-parent class="accordion accordion-flush"></div>`;
                 key.ideas.forEach(idea => {
-                    output += `<a href="/ideas/${idea._id}" class="list-group-item list-group-item-action">${idea.title}</a>`;
+                    output += `<a href="/ideas/${idea._id}" class="list-group-item list-group-item-action" style="padding: 1.0rem 1.25rem">${idea.title}</a>`;
                 });
                 output += `</ul></div>`;
                 output += "</div>";
