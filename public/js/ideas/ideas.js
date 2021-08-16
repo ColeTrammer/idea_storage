@@ -41,7 +41,7 @@ $(() => {
             Object.values(node.categories).forEach(key => {
                 const path = base + key.name + "/";
 
-                const id = `category-${path.replace("/", "-")}`;
+                const id = `category-${path.replaceAll("/", "-")}`;
                 const headerId = `${id}-header`;
                 const contentId = `${id}-content`;
 
@@ -67,6 +67,6 @@ $(() => {
             });
         };
 
-        renderCategory($("#ideas"), root, "/");
+        renderCategory($("#ideas"), root, "");
     });
 });

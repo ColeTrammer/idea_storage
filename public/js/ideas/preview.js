@@ -1,19 +1,32 @@
 $(() => {
-    const renderBreadcrumbs = category => {
+    const renderBreadcrumbs = (category, title) => {
         const parts = category.split("/");
-        const listElements = parts.map((part, i) => `<li class="breadcrumb-item ${i === parts.length - 1 ? "active" : ""}">${part}</li>`);
-        return `<ol class="breadcrumb mb-0">${listElements.join("")}</ol>`;
+        const listElements = parts.map(
+            (part, i) => `<li class="breadcrumb-item">
+                              <a href="/ideas/#${parts.slice(0, i + 1).join("/")}/">${part}</a>
+                          </li>`
+        );
+        return `<nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                ${listElements.join("")}
+                <li class="breadcrumb-item active" aria-current="page">${title}</li>
+            </ol>
+        </nav>`;
     };
 
-    const f = () => {
-        $("#idea-category").html(renderBreadcrumbs($("#category").val()));
-        $("#idea-title").html($("#title").val());
-        $("#idea-content").html(marked($("#content").val()));
+    const update = () => {
+        const category = $("#category").val();
+        const title = $("#title").val();
+        const content = $("#content").val();
+
+        $("#idea-category").html(renderBreadcrumbs(category, title));
+        $("#idea-title").html(title);
+        $("#idea-content").html(marked(content));
     };
 
-    f();
+    update();
     $("#idea-form").on("input", () => {
-        f();
+        update();
         $("#idea").show();
     });
 });

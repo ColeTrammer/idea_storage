@@ -4,10 +4,12 @@
 
 #idea.card(style=hasIdea ? "" : "display: none")
     #idea-category.card-header
-        ol.breadcrumb.mb-0
-            each val, index in categories
-                - var last = index === categories.length - 1
-                li.breadcrumb-item(class=last ? "active" : "")= val
+        nav(aria-label="breadcrumb")
+            ol.breadcrumb.mb-0
+                each val, index in categories
+                    li.breadcrumb-item
+                        a(href=`/ideas/#${categories.slice(0, index + 1).join("/")}/`)= val
+                li.breadcrumb-item.active(aria-current="page")= idea.title
     .card-body
         h2#idea-title.card-title= idea.title
         p#idea-content.cart-text= idea.content
