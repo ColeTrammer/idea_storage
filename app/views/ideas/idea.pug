@@ -1,15 +1,12 @@
 extends ../layout.pug
 
+
 block head
     script(src="https://cdn.jsdelivr.net/npm/marked/marked.min.js")
     script(src="/public/js/ideas/render.js")
 
 block content
-    .card
-        .card-header.text-muted= idea.category
-        .card-body
-            h2.card-title= idea.title
-            p#content.cart-text= idea.content
+    include _idea.pug
     .mt-2
         a(href="/ideas/" + idea._id + "/edit") #[button.btn.btn-secondary Edit]
         a(href="/ideas/" + idea._id + "/delete" style="float: right;") #[button.btn.btn-danger Delete]

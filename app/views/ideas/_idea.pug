@@ -1,0 +1,13 @@
+- var hasIdea = !!idea
+- var idea = idea || { title: "", category: "", content: "" }
+- var categories = idea.category.split("/")
+
+#idea.card(style=hasIdea ? "" : "display: none")
+    #idea-category.card-header
+        ol.breadcrumb.mb-0
+            each val, index in categories
+                - var last = index === categories.length - 1
+                li.breadcrumb-item(class=last ? "active" : "")= val
+    .card-body
+        h2#idea-title.card-title= idea.title
+        p#idea-content.cart-text= idea.content
