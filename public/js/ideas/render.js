@@ -1,3 +1,3 @@
 $(() => {
-    $("#idea-content").html(marked($("#idea-content").html()));
+    $("#idea-content").html(marked.parse($("#idea-content").html()));
 });

@@ -21,7 +21,7 @@ $(() => {
 
         $("#idea-category").html(renderBreadcrumbs(category, title));
         $("#idea-title").html(title);
-        $("#idea-content").html(marked(content));
+        $("#idea-content").html(marked.parse(content));
     };
 
     update();
