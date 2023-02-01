@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "express-compile-sass": "^4.0.0",
     "express-session": "^1.17.2",
-    "mongoose": "^5.13.7",
+    "mongoose": "^5.13.15",
     "node-sass": "^6.0.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
